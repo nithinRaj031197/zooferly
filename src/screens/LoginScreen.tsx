@@ -7,9 +7,19 @@ import { RootStackParamList } from "../types/general";
 
 type LoginScreenProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
-const LoginScreen = ({ navigation }: LoginScreenProps) => {
+const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    // Example placeholders for phoneNumber and otp
+    const phoneNumber = "+8801774280874";
+    const otp = "123456";
+
+    // Perform login logic here, then navigate
+    console.log("Login successful");
+    navigation.navigate("PhoneNumberScreen");
+  };
 
   return (
     <View style={styles.container}>
@@ -24,7 +34,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
-      <Button title="Login" onPress={() => console.log("Login")} />
+      <Button title="Login" onPress={handleLogin} />
       <Text style={styles.orWith}>Or With</Text>
       <Button title="Login with Google" onPress={() => console.log("Google Login")} />
       <View style={styles.footer}>

@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.nithinraj123.zofferly"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2378214c-aafb-4cdb-9e4b-15408db3e6a4"
+      }
+    },
+    "owner": "nithinraj123"
   }
 }
