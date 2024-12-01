@@ -11,7 +11,6 @@ const PhoneNumberScreen: React.FC<PhoneNumberScreenProps> = ({ navigation }) => 
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleGetOTP = () => {
-    // Navigate to the OTP screen
     navigation.navigate("OTPScreen", { phoneNumber });
   };
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/general";
+import OTPInput from "../components/OtpTnput";
 
 type OTPScreenProps = NativeStackScreenProps<RootStackParamList, "OTPScreen">;
 
@@ -11,7 +12,6 @@ const OTPScreen: React.FC<OTPScreenProps> = ({ route, navigation }) => {
   const { phoneNumber } = route.params;
 
   const handleSubmit = () => {
-    // Navigate to OTP Verification Screen
     navigation.navigate("OTPVerificationScreen", { phoneNumber, otp });
   };
 
@@ -19,7 +19,7 @@ const OTPScreen: React.FC<OTPScreenProps> = ({ route, navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>OTP Verification</Text>
       <Text style={styles.subtitle}>Enter the code from the SMS we sent to {phoneNumber}</Text>
-      <TextInput style={styles.otpInput} keyboardType="number-pad" placeholder="Enter OTP" value={otp} onChangeText={setOtp} />
+      <OTPInput length={6} value={otp} onChange={setOtp} inputStyle={styles.otpInput} containerStyle={styles.otpContainer} />
       <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
@@ -28,7 +28,7 @@ const OTPScreen: React.FC<OTPScreenProps> = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 12,
     justifyContent: "center",
     backgroundColor: "#FFF",
   },
@@ -36,19 +36,28 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     marginBottom: 8,
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 14,
     color: "#555",
-    marginBottom: 16,
+    marginBottom: 24,
+    textAlign: "center",
+  },
+  otpContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignSelf: "center",
+    marginBottom: 24,
   },
   otpInput: {
     borderWidth: 1,
     borderColor: "#DDD",
     borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    marginBottom: 16,
+    width: 45,
+    height: 50,
+    fontSize: 18,
+    textAlign: "center",
   },
 });
 
